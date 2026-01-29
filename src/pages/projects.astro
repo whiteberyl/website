@@ -1,0 +1,246 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Projects | Nick Pham">
+    <div class="container">
+        <div class="page-header">
+            <h1>My Projects</h1>
+            <p class="subtitle">Things I've built and am proud of</p>
+        </div>
+
+        <div class="projects-grid">
+            <article class="project-card">
+                <div class="project-image">
+                    <div class="placeholder-image">💊</div>
+                    <!-- TODO: Replace with actual project image -->
+                    <!-- <img src="/projects/prescription-module.png" alt="Shopify Prescription Module"> -->
+                </div>
+                <div class="project-content">
+                    <h2>Shopify Prescription Module</h2>
+                    <p>An AI-augmented prescription workflow built with JavaScript, AJAX, HTML/CSS, and Shopify Liquid. Features dynamic validation, variant syncing, and cart automation. Utilized LLMs for UI debugging and Liquid logic troubleshooting.</p>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Shopify Liquid</span>
+                        <span class="tag">AJAX</span>
+                        <span class="tag">AI-Augmented</span>
+                    </div>
+                    <!-- No links for Shopify projects per request -->
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-image">
+                    <div class="placeholder-image">✨</div>
+                    <!-- TODO: Replace with actual project image -->
+                    <!-- <img src="/projects/parallax-ux.png" alt="Shopify Parallax UX"> -->
+                </div>
+                <div class="project-content">
+                    <h2>Shopify Parallax & UX Automation</h2>
+                    <p>Designed motion-driven parallax scrolling with synchronized text transitions. Leveraged LLM-driven reasoning to improve layout responsiveness and reduce UI artifacts. Developed modular frontend components with prompt-engineered iterations.</p>
+                    <div class="project-tags">
+                        <span class="tag">Parallax</span>
+                        <span class="tag">UX Design</span>
+                        <span class="tag">Shopify</span>
+                        <span class="tag">LLM-Driven</span>
+                    </div>
+                    <!-- No links for Shopify projects per request -->
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-image">
+                    <div class="placeholder-image">🔗</div>
+                    <!-- TODO: Replace with actual project image -->
+                    <!-- <img src="/projects/linktree-clone.png" alt="Linktree Clone"> -->
+                </div>
+                <div class="project-content">
+                    <h2>Linktree Clone</h2>
+                    <p>A modern link-in-bio platform clone built with responsive design principles. Features customizable themes and smooth animations for an elegant user experience.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Responsive</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="https://github.com/whiteberyl" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-image">
+                    <div class="placeholder-image">💻</div>
+                    <!-- TODO: Replace with actual project image -->
+                    <!-- <img src="/projects/terminal-portfolio.png" alt="Terminal Portfolio"> -->
+                </div>
+                <div class="project-content">
+                    <h2>Terminal Portfolio</h2>
+                    <p>An interactive terminal-style portfolio website that simulates a command-line interface. Features dynamic command parsing and a unique retro aesthetic.</p>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">CLI Design</span>
+                        <span class="tag">Interactive</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Try It</a>
+                        <a href="https://github.com/whiteberyl" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .page-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .page-header h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        color: var(--pink-200);
+        margin-bottom: 1rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+        color: var(--text-muted);
+        font-style: italic;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .project-card {
+        background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(192, 132, 252, 0.05));
+        border: 1px solid rgba(244, 114, 182, 0.2);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .project-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--pink-400);
+        box-shadow: 0 12px 40px rgba(244, 114, 182, 0.25);
+        background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(192, 132, 252, 0.1));
+    }
+
+    .project-image {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: linear-gradient(135deg, var(--pink-600), var(--purple-400));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .placeholder-image {
+        font-size: 4rem;
+    }
+
+    .project-content {
+        padding: 2rem;
+    }
+
+    .project-content h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        color: var(--pink-200);
+        margin-bottom: 0.75rem;
+    }
+
+    .project-content > p {
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tag {
+        padding: 0.25rem 0.75rem;
+        background: rgba(244, 114, 182, 0.15);
+        color: var(--pink-300);
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-family: 'IBM Plex Mono', monospace;
+        border: 1px solid rgba(244, 114, 182, 0.3);
+    }
+
+    .project-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .project-link {
+        color: var(--pink-400);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+
+    .project-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--pink-400);
+        transition: width 0.3s ease;
+    }
+
+    .project-link:hover {
+        color: var(--pink-300);
+    }
+
+    .project-link:hover::after {
+        width: 100%;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .page-header h1 {
+            font-size: 2.5rem;
+        }
+
+        .projects-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

@@ -1,0 +1,712 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Portfolio - Dream big, build beautifully" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content={description}>
+    <title>{title}</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Interactive Starfield Background -->
+    <div class="starfield-interactive">
+        <canvas id="starCanvas"></canvas>
+    </div>
+
+    <!-- Custom Cursor Dots -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="site-header">
+            <div class="container">
+                <nav class="nav">
+                    <a href="/" class="logo">
+                        <span class="logo-symbol">✧</span>
+                        <span class="logo-text">NICK PHAM</span>
+                        <span class="logo-symbol">✧</span>
+                    </a>
+                    <ul class="nav-links">
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/projects">Projects</a></li>
+                        <li><a href="/Nick_Pham_Resume.pdf" download>Resume</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <slot />
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="divider">
+                    <span class="divider-icon">⚙</span>
+                </div>
+                <div class="footer-content">
+                    <p class="footer-text">
+                        <span class="brass">◈</span>
+                        Crafted with passion · © 2024-2026 Nick Pham
+                        <span class="brass">◈</span>
+                    </p>
+                    <div class="footer-links">
+                        <a href="https://github.com/whiteberyl" target="_blank" rel="noopener">GitHub</a>
+                        <span class="footer-sep">·</span>
+                        <a href="https://www.linkedin.com/in/nick-pham-46887230a/" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+
+<style is:global>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        /* Pink starfield theme colors */
+        --pink-50: #fdf2f8;
+        --pink-100: #fce7f3;
+        --pink-200: #fbcfe8;
+        --pink-300: #f9a8d4;
+        --pink-400: #f472b6;
+        --pink-500: #ec4899;
+        --pink-600: #db2777;
+        --pink-700: #be185d;
+        --rose-400: #fb7185;
+        --rose-500: #f43f5e;
+        --purple-300: #d8b4fe;
+        --purple-400: #c084fc;
+        
+        /* Base colors */
+        --bg-dark: #0a0412;
+        --text-light: #fef3f9;
+        --text-muted: #e0bfd4;
+        --accent: var(--pink-400);
+        --accent-glow: var(--pink-300);
+    }
+
+    body {
+        font-family: 'Cormorant Garamond', serif;
+        background: var(--bg-dark);
+        color: var(--text-light);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* Starfield Background */
+    .starfield-interactive {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        background: radial-gradient(ellipse at top, #1a0822 0%, var(--bg-dark) 50%);
+    }
+
+    #starCanvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    /* Custom Cursor Particles */
+    .cursor-particle {
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        animation: particleFade 0.6s ease-out forwards;
+    }
+
+    .cursor-particle.star svg,
+    .cursor-particle.sparkle svg {
+        filter: drop-shadow(0 0 3px currentColor);
+    }
+
+    @keyframes particleFade {
+        0% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-30px) scale(0.3);
+        }
+    }
+
+    /* Page Layout */
+    .page-wrapper {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        width: 100%;
+    }
+
+    /* Header */
+    .site-header {
+        padding: 2rem 0;
+        border-bottom: 1px solid rgba(244, 114, 182, 0.15);
+        backdrop-filter: blur(10px);
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-light);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: color 0.3s ease;
+    }
+
+    .logo:hover {
+        color: var(--pink-300);
+    }
+
+    .logo-symbol {
+        color: var(--pink-400);
+        font-size: 1.2rem;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--pink-400), var(--purple-400));
+        transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--pink-300);
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    /* Main Content */
+    .main-content {
+        flex: 1;
+        padding: 4rem 0;
+    }
+
+    /* Divider */
+    .divider {
+        text-align: center;
+        margin: 4rem 0 2rem;
+        position: relative;
+    }
+
+    .divider::before,
+    .divider::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 40%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--pink-400), transparent);
+    }
+
+    .divider::before {
+        left: 0;
+    }
+
+    .divider::after {
+        right: 0;
+    }
+
+    .divider-icon {
+        display: inline-block;
+        color: var(--pink-400);
+        font-size: 1.5rem;
+        position: relative;
+        z-index: 1;
+        background: var(--bg-dark);
+        padding: 0 1rem;
+    }
+
+    /* Footer */
+    .site-footer {
+        padding: 3rem 0 2rem;
+        border-top: 1px solid rgba(244, 114, 182, 0.15);
+        margin-top: 4rem;
+    }
+
+    .footer-content {
+        text-align: center;
+    }
+
+    .footer-text {
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+
+    .brass {
+        color: var(--pink-400);
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .footer-links a {
+        color: var(--pink-300);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--pink-200);
+    }
+
+    .footer-sep {
+        color: var(--pink-400);
+    }
+
+    /* Custom Cursor Dot */
+    body {
+        cursor: none;
+    }
+
+    a, button, .btn {
+        cursor: none;
+    }
+
+    .cursor-dot {
+        width: 12px;
+        height: 12px;
+        background: linear-gradient(135deg, var(--pink-400), var(--rose-400));
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 10000;
+        transition: transform 0.1s ease, opacity 0.15s ease;
+        box-shadow: 0 0 20px rgba(244, 114, 182, 0.6),
+                    0 0 40px rgba(236, 72, 153, 0.4),
+                    0 0 60px rgba(244, 114, 182, 0.2);
+        opacity: 0;
+        transform: translate(-50%, -50%);
+    }
+
+    .cursor-dot.active {
+        opacity: 1;
+    }
+
+    .cursor-dot.hover {
+        transform: translate(-50%, -50%) scale(1.5);
+        background: linear-gradient(135deg, var(--pink-300), var(--rose-300));
+        box-shadow: 0 0 30px rgba(244, 114, 182, 0.8),
+                    0 0 50px rgba(236, 72, 153, 0.6),
+                    0 0 80px rgba(244, 114, 182, 0.3);
+    }
+
+    .cursor-outline {
+        width: 32px;
+        height: 32px;
+        border: 1.5px solid var(--pink-400);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.15s ease, opacity 0.15s ease, border-color 0.15s ease;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+    }
+
+    .cursor-outline.active {
+        opacity: 0.3;
+    }
+
+    .cursor-outline.hover {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0.5;
+        border-color: var(--pink-300);
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+        .nav-links {
+            gap: 1.5rem;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .nav {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-links {
+            gap: 1rem;
+        }
+
+        .container {
+            padding: 0 1.5rem;
+        }
+    }
+</style>
+
+<script>
+    // Custom Cursor Particles Script
+    const config = {
+        particleCount: 2,
+        throttleMs: 35
+    };
+    
+    const pinkColors = ['#f472b6', '#ec4899', '#f9a8d4', '#fbcfe8', '#c084fc', '#d8b4fe'];
+
+    function createStarSVG(color: string, size: number): string {
+        return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/>
+        </svg>`;
+    }
+
+    function createSparkleSVG(color: string, size: number): string {
+        return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0L13.5 10.5L24 12L13.5 13.5L12 24L10.5 13.5L0 12L10.5 10.5L12 0Z"/>
+        </svg>`;
+    }
+
+    let lastTime = 0;
+    let lastX = 0;
+    let lastY = 0;
+
+    function createParticle(x: number, y: number): void {
+        const particle = document.createElement('div');
+        particle.className = 'cursor-particle';
+        
+        const random = Math.random();
+        const color = pinkColors[Math.floor(Math.random() * pinkColors.length)];
+        const size = 5 + Math.random() * 6;
+        const offsetX = (Math.random() - 0.5) * 30;
+        const offsetY = (Math.random() - 0.5) * 30;
+
+        particle.style.left = `${x + offsetX - size/2}px`;
+        particle.style.top = `${y + offsetY - size/2}px`;
+
+        if (random < 0.5) {
+            particle.classList.add('star');
+            particle.innerHTML = createStarSVG(color, size);
+        } else {
+            particle.classList.add('sparkle');
+            particle.innerHTML = createSparkleSVG(color, size);
+        }
+
+        const duration = 0.4 + Math.random() * 0.6;
+        particle.style.animationDuration = `${duration}s`;
+
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+            particle.remove();
+        }, duration * 1000);
+    }
+
+    function handleMouseMove(e: MouseEvent): void {
+        const now = Date.now();
+        if (now - lastTime < config.throttleMs) return;
+
+        const distance = Math.sqrt(
+            Math.pow(e.clientX - lastX, 2) + 
+            Math.pow(e.clientY - lastY, 2)
+        );
+
+        if (distance > 6) {
+            const count = Math.min(config.particleCount, Math.floor(distance / 12) + 1);
+            for (let i = 0; i < count; i++) {
+                createParticle(e.clientX, e.clientY);
+            }
+            lastX = e.clientX;
+            lastY = e.clientY;
+            lastTime = now;
+        }
+    }
+
+    document.addEventListener('mousemove', handleMouseMove);
+
+    // Cursor Dot Tracking Script
+    const cursorDot = document.querySelector('.cursor-dot') as HTMLElement;
+    const cursorOutline = document.querySelector('.cursor-outline') as HTMLElement;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let outlineX = 0;
+    let outlineY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        // Center the dot on the cursor
+        cursorDot.style.left = mouseX + 'px';
+        cursorDot.style.top = mouseY + 'px';
+        
+        cursorDot.classList.add('active');
+        cursorOutline.classList.add('active');
+    });
+
+    document.addEventListener('mouseenter', () => {
+        cursorDot.classList.add('active');
+        cursorOutline.classList.add('active');
+    });
+
+    document.addEventListener('mouseleave', () => {
+        cursorDot.classList.remove('active');
+        cursorOutline.classList.remove('active');
+    });
+
+    // Smooth follow for outline with better easing
+    function animateOutline(): void {
+        const speed = 0.2; // Faster, smoother follow
+        outlineX += (mouseX - outlineX) * speed;
+        outlineY += (mouseY - outlineY) * speed;
+
+        // Center the outline on its position
+        cursorOutline.style.left = outlineX + 'px';
+        cursorOutline.style.top = outlineY + 'px';
+
+        requestAnimationFrame(animateOutline);
+    }
+    animateOutline();
+
+    // Hover effect for interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .btn');
+    
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorDot.classList.add('hover');
+            cursorOutline.classList.add('hover');
+        });
+        
+        el.addEventListener('mouseleave', () => {
+            cursorDot.classList.remove('hover');
+            cursorOutline.classList.remove('hover');
+        });
+    });
+
+    // Starfield Canvas Script
+    const canvas = document.getElementById('starCanvas') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d')!;
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let starMouseX = width / 2;
+    let starMouseY = height / 2;
+
+    interface Star {
+        x: number;
+        y: number;
+        baseX: number;
+        baseY: number;
+        size: number;
+        opacity: number;
+        twinkleSpeed: number;
+        twinkleOffset: number;
+        depth: number;
+        color: string;
+        glowColor: string;
+    }
+
+    const stars: Star[] = [];
+    const starCount = 200;
+
+    // Pink-themed star colors with glow
+    const starColors = [
+        { color: 'rgba(251, 207, 232,', glow: 'rgba(249, 168, 212,' },
+        { color: 'rgba(249, 168, 212,', glow: 'rgba(244, 114, 182,' },
+        { color: 'rgba(244, 114, 182,', glow: 'rgba(236, 72, 153,' },
+        { color: 'rgba(236, 72, 153,', glow: 'rgba(219, 39, 119,' },
+        { color: 'rgba(216, 180, 254,', glow: 'rgba(192, 132, 252,' },
+        { color: 'rgba(255, 240, 250,', glow: 'rgba(251, 207, 232,' },
+    ];
+
+    function initStars(): void {
+        stars.length = 0;
+        for (let i = 0; i < starCount; i++) {
+            const colorScheme = starColors[Math.floor(Math.random() * starColors.length)];
+            const isBright = Math.random() < 0.13;
+            
+            stars.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                baseX: Math.random() * width,
+                baseY: Math.random() * height,
+                size: isBright ? Math.random() * 1.8 + 1.2 : Math.random() * 1 + 0.25,
+                opacity: isBright ? Math.random() * 0.35 + 0.5 : Math.random() * 0.4 + 0.2,
+                twinkleSpeed: Math.random() * 0.03 + 0.01,
+                twinkleOffset: Math.random() * Math.PI * 2,
+                depth: Math.random() * 0.5 + 0.1,
+                color: colorScheme.color,
+                glowColor: colorScheme.glow
+            });
+        }
+    }
+
+    function resize(): void {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        
+        stars.forEach(star => {
+            star.baseX = Math.random() * width;
+            star.baseY = Math.random() * height;
+        });
+    }
+
+    function drawStar(x: number, y: number, size: number, opacity: number, color: string, glowColor: string): void {
+        // Outer glow - reduced for more definition
+        const outerGlow = ctx.createRadialGradient(x, y, 0, x, y, size * 4);
+        outerGlow.addColorStop(0, `${glowColor}${opacity * 0.4})`);
+        outerGlow.addColorStop(0.5, `${glowColor}${opacity * 0.15})`);
+        outerGlow.addColorStop(1, `${glowColor}0)`);
+        
+        ctx.beginPath();
+        ctx.arc(x, y, size * 4, 0, Math.PI * 2);
+        ctx.fillStyle = outerGlow;
+        ctx.fill();
+
+        // Inner glow - more concentrated
+        const innerGlow = ctx.createRadialGradient(x, y, 0, x, y, size * 1.8);
+        innerGlow.addColorStop(0, `${color}${opacity * 0.9})`);
+        innerGlow.addColorStop(0.5, `${glowColor}${opacity * 0.4})`);
+        innerGlow.addColorStop(1, `${glowColor}0)`);
+        
+        ctx.beginPath();
+        ctx.arc(x, y, size * 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = innerGlow;
+        ctx.fill();
+
+        // Core - brighter and more defined
+        ctx.beginPath();
+        ctx.arc(x, y, size, 0, Math.PI * 2);
+        ctx.fillStyle = `${color}${Math.min(opacity * 1.3, 1)})`;
+        ctx.fill();
+
+        // Sparkle effect for larger stars - more visible
+        if (size > 1.5) {
+            ctx.strokeStyle = `${color}${opacity * 0.8})`;
+            ctx.lineWidth = 0.8;
+            
+            ctx.beginPath();
+            ctx.moveTo(x - size * 4, y);
+            ctx.lineTo(x + size * 4, y);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(x, y - size * 4);
+            ctx.lineTo(x, y + size * 4);
+            ctx.stroke();
+        }
+    }
+
+    function animate(): void {
+        ctx.clearRect(0, 0, width, height);
+
+        const time = Date.now() * 0.001;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const deltaX = (starMouseX - centerX) / centerX;
+        const deltaY = (starMouseY - centerY) / centerY;
+
+        stars.forEach(star => {
+            // Parallax effect
+            const offsetX = deltaX * 40 * star.depth;
+            const offsetY = deltaY * 40 * star.depth;
+            
+            star.x += (star.baseX + offsetX - star.x) * 0.03;
+            star.y += (star.baseY + offsetY - star.y) * 0.03;
+
+            // Twinkle effect
+            const twinkle1 = Math.sin(time * star.twinkleSpeed * 15 + star.twinkleOffset);
+            const twinkle2 = Math.sin(time * star.twinkleSpeed * 7 + star.twinkleOffset * 2);
+            const twinkle = (twinkle1 + twinkle2) / 2;
+            const currentOpacity = star.opacity * (0.6 + twinkle * 0.4);
+
+            drawStar(star.x, star.y, star.size, currentOpacity, star.color, star.glowColor);
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    // Event listeners
+    document.addEventListener('mousemove', (e) => {
+        starMouseX = e.clientX;
+        starMouseY = e.clientY;
+    });
+
+    document.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+            starMouseX = e.touches[0].clientX;
+            starMouseY = e.touches[0].clientY;
+        }
+    });
+
+    window.addEventListener('resize', resize);
+
+    // Initialize
+    resize();
+    initStars();
+    animate();
+</script>

@@ -1,0 +1,416 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Resume | Your Portfolio">
+    <div class="container">
+        <div class="page-header">
+            <h1>Resume</h1>
+            <p class="subtitle">My professional journey</p>
+            <a href="#" class="download-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="resume-content">
+            <!-- Experience Section -->
+            <section class="resume-section">
+                <h2>Work Experience</h2>
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <h3>Senior Full-Stack Developer</h3>
+                                <p class="company">Tech Innovations Inc.</p>
+                            </div>
+                            <p class="date">2022 - Present</p>
+                        </div>
+                        <ul class="responsibilities">
+                            <li>Led development of microservices architecture serving 1M+ users</li>
+                            <li>Mentored team of 5 junior developers</li>
+                            <li>Improved application performance by 40% through optimization</li>
+                            <li>Implemented CI/CD pipelines reducing deployment time by 60%</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>PostgreSQL</span>
+                            <span>AWS</span>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <h3>Full-Stack Developer</h3>
+                                <p class="company">Startup Solutions</p>
+                            </div>
+                            <p class="date">2020 - 2022</p>
+                        </div>
+                        <ul class="responsibilities">
+                            <li>Built and deployed 10+ web applications from scratch</li>
+                            <li>Collaborated with design team to implement pixel-perfect UIs</li>
+                            <li>Integrated third-party APIs and payment systems</li>
+                            <li>Maintained 99.9% uptime across all production services</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span>Vue.js</span>
+                            <span>Express</span>
+                            <span>MongoDB</span>
+                            <span>Docker</span>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <h3>Junior Developer</h3>
+                                <p class="company">Digital Agency Co.</p>
+                            </div>
+                            <p class="date">2018 - 2020</p>
+                        </div>
+                        <ul class="responsibilities">
+                            <li>Developed responsive websites for 20+ clients</li>
+                            <li>Participated in agile development processes</li>
+                            <li>Wrote clean, maintainable code following best practices</li>
+                            <li>Conducted code reviews and testing</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span>JavaScript</span>
+                            <span>HTML/CSS</span>
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section class="resume-section">
+                <h2>Education</h2>
+                <div class="education-list">
+                    <div class="education-item">
+                        <div class="education-header">
+                            <div>
+                                <h3>Bachelor of Science in Computer Science</h3>
+                                <p class="school">University Name</p>
+                            </div>
+                            <p class="date">2014 - 2018</p>
+                        </div>
+                        <p class="details">GPA: 3.8/4.0 • Dean's List • Computer Science Club President</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="resume-section">
+                <h2>Technical Skills</h2>
+                <div class="skills-list">
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <p>JavaScript, TypeScript, Python, Java, C#, SQL</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <p>React, Vue.js, Astro, Next.js, Tailwind CSS, SASS</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <p>Node.js, Express, Django, Flask, GraphQL, REST APIs</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Database</h3>
+                        <p>PostgreSQL, MongoDB, MySQL, Redis, Firebase</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>DevOps</h3>
+                        <p>Docker, Kubernetes, AWS, CI/CD, Git, GitHub Actions</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tools</h3>
+                        <p>VS Code, Figma, Postman, Jira, Slack</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certifications Section -->
+            <section class="resume-section">
+                <h2>Certifications</h2>
+                <div class="cert-list">
+                    <div class="cert-item">
+                        <h3>AWS Certified Solutions Architect</h3>
+                        <p>Amazon Web Services • 2023</p>
+                    </div>
+                    <div class="cert-item">
+                        <h3>Professional Scrum Master</h3>
+                        <p>Scrum.org • 2022</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .page-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .page-header h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        color: var(--pink-200);
+        margin-bottom: 1rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+        color: var(--text-muted);
+        font-style: italic;
+        margin-bottom: 2rem;
+    }
+
+    .download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.875rem 1.75rem;
+        background: linear-gradient(135deg, var(--pink-500), var(--rose-500));
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(244, 114, 182, 0.3);
+    }
+
+    .download-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 30px rgba(244, 114, 182, 0.5);
+    }
+
+    .download-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .resume-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .resume-section {
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .resume-section h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        color: var(--pink-300);
+        margin-bottom: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba(244, 114, 182, 0.3);
+    }
+
+    .experience-list,
+    .education-list {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .experience-item,
+    .education-item {
+        background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(192, 132, 252, 0.05));
+        border: 1px solid rgba(244, 114, 182, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+    }
+
+    .experience-item:hover,
+    .education-item:hover {
+        border-color: var(--pink-400);
+        box-shadow: 0 8px 24px rgba(244, 114, 182, 0.15);
+    }
+
+    .experience-header,
+    .education-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 1rem;
+        gap: 1rem;
+    }
+
+    .experience-header h3,
+    .education-header h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.4rem;
+        color: var(--pink-200);
+        margin-bottom: 0.25rem;
+    }
+
+    .company,
+    .school {
+        color: var(--pink-400);
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .date {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        white-space: nowrap;
+        margin: 0;
+    }
+
+    .responsibilities {
+        list-style: none;
+        margin: 1.5rem 0;
+        padding-left: 0;
+    }
+
+    .responsibilities li {
+        color: var(--text-muted);
+        line-height: 1.8;
+        padding-left: 1.5rem;
+        position: relative;
+        margin-bottom: 0.5rem;
+    }
+
+    .responsibilities li::before {
+        content: '▸';
+        position: absolute;
+        left: 0;
+        color: var(--pink-400);
+    }
+
+    .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .tech-stack span {
+        padding: 0.25rem 0.75rem;
+        background: rgba(244, 114, 182, 0.15);
+        color: var(--pink-300);
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-family: 'IBM Plex Mono', monospace;
+        border: 1px solid rgba(244, 114, 182, 0.3);
+    }
+
+    .details {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    .skills-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .skill-category {
+        background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(192, 132, 252, 0.05));
+        border: 1px solid rgba(244, 114, 182, 0.2);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+        border-color: var(--pink-400);
+        box-shadow: 0 8px 24px rgba(244, 114, 182, 0.15);
+    }
+
+    .skill-category h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem;
+        color: var(--pink-300);
+        margin-bottom: 0.75rem;
+    }
+
+    .skill-category p {
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .cert-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .cert-item {
+        background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(192, 132, 252, 0.05));
+        border: 1px solid rgba(244, 114, 182, 0.2);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .cert-item:hover {
+        border-color: var(--pink-400);
+        box-shadow: 0 8px 24px rgba(244, 114, 182, 0.15);
+    }
+
+    .cert-item h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem;
+        color: var(--pink-200);
+        margin-bottom: 0.5rem;
+    }
+
+    .cert-item p {
+        color: var(--text-muted);
+        margin: 0;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .page-header h1 {
+            font-size: 2.5rem;
+        }
+
+        .experience-header,
+        .education-header {
+            flex-direction: column;
+        }
+
+        .date {
+            align-self: flex-start;
+        }
+
+        .skills-list,
+        .cert-list {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
